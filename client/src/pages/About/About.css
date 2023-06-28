@@ -1,0 +1,28 @@
+.About {
+  margin: 100px auto;
+  max-width: 1400px;
+  padding: 0 50px;
+}
+.About > div {
+  margin-bottom: 35px;
+}
+.About .header h1 {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+.About > div h2 {
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+.About > div ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+.About > div ul li {
+  margin-bottom: 10px;
+}
+.About > div ul li h4 {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
