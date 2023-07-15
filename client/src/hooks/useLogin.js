@@ -9,7 +9,7 @@ const useLogin = () => {
     setIsPending(true);
     setError(null);
     try {
-      const res = await fetch('http://localhost:5000/user/login', {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND}user/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

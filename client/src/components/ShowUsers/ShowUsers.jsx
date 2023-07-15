@@ -3,7 +3,7 @@ import useAuthContext from '../../hooks/useAuthContext';
 const ShowUsers = ({ setMessages, setSelectedUser, scrollToBottom, onlineUsers, offlineUsers }) => {
   const { user } = useAuthContext();
   const handleUserSelect = async (e, id) => {
-    const res = await fetch('http://localhost:5000/chat/' + id, {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND}chat/` + id, {
       headers: {
         Authorization: `bearer ${user.token}`,
       },

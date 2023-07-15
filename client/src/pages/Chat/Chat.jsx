@@ -18,7 +18,7 @@ const Chat = () => {
     const cookies = new Cookies();
     cookies.set('token', user.token);
     cookies.set('username', user.username);
-    const ws = new WebSocket('ws://localhost:5000');
+    const ws = new WebSocket(import.meta.env.VITE_SOCKET_SERVER);
     setWs(ws);
     ws.addEventListener('message', (e) => {
       const data = JSON.parse(e.data);
@@ -45,7 +45,7 @@ const Chat = () => {
 
   useEffect(() => {
     const fetchAllUsers = async () => {
-      const res = await fetch('http://localhost:5000/chat/all', {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND}chat/all`, {
         headers: {
           Authorization: `bearer ${user.token}`,
         },
@@ -99,11 +99,22 @@ const Chat = () => {
       </div>
       <div className="side-bar">
         <h2>Contacts</h2>
-        <ShowUsers setMessages={setMessages} setSelectedUser={setSelectedUser} scrollToBottom={scrollToBottom} onlineUsers={onlineUsers} offlineUsers={offlineUsers} />
+        <ShowUsers
+          setMessages={setMessages}
+          setSelectedUser={setSelectedUser}
+          scrollToBottom={scrollToBottom}
+          onlineUsers={onlineUsers}
+          offlineUsers={offlineUsers}
+        />
       </div>
       <div className="chat-container">
         <ShowMessages messages={messages} selectedUser={selectedUser} />
-        <MessageForm selectedUser={selectedUser} ws={ws} setMessages={setMessages} scrollToBottom={scrollToBottom} />
+        <MessageForm
+          selectedUser={selectedUser}
+          ws={ws}
+          setMessages={setMessages}
+          scrollToBottom={scrollToBottom}
+        />
       </div>
     </div>
   );
